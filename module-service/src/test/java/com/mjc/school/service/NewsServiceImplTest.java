@@ -38,7 +38,7 @@ public class NewsServiceImplTest {
     @DisplayName("JUnit test for getAll method")
     @Test
     public void shouldReturnListOfAllNews() {
-        List<NewsDTOResponse> result = newsService.getAll();
+        List<NewsDTOResponse> result = newsService.readAll();
         assertEquals(newsList.size(), result.size());
     }
 
@@ -47,21 +47,21 @@ public class NewsServiceImplTest {
     public void shouldReturnNewsDTOResponceWithGivenId() {
         Long id = 2L;
         NewsDTOResponse expected = mapper.convertToDTO(newsList.get((int) (id - 1)));
-        assertEquals(expected, newsService.getById(id));
+        assertEquals(expected, newsService.readById(id));
     }
 
     @DisplayName("JUnit test for getById method. News with such id does not exist.")
     @Test
     public void shouldThrowNotFoundExceptionWhenNewsIdDoesNotExistForGet() {
         Long id = 58L;
-        assertThrows(NotFoundException.class, () -> newsService.getById(id));
+        assertThrows(NotFoundException.class, () -> newsService.readById(id));
     }
 
     @DisplayName("JUnit test for getById method. Id lesser than allowed.")
     @Test
     public void shouldThrowValidatorExceptionWhenNewsIdLesserThanAllowed() {
         Long id = 0L;
-        assertThrows(ValidatorException.class, () -> newsService.getById(id));
+        assertThrows(ValidatorException.class, () -> newsService.readById(id));
     }
 
     @DisplayName("JUnit test for create method.")

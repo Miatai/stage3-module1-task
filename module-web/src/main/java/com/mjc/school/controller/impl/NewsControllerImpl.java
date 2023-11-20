@@ -12,13 +12,13 @@ public class NewsControllerImpl implements Controller<NewsDTOResponse, NewsDTORe
     private final Service<NewsDTOResponse, NewsDTORequest> service = new NewsServiceImpl();
 
     @Override
-    public List<NewsDTOResponse> getAll() {
-        return this.service.getAll();
+    public List<NewsDTOResponse> readAll() {
+        return this.service.readAll();
     }
 
     @Override
-    public NewsDTOResponse getById(long id) {
-        return this.service.getById(id);
+    public NewsDTOResponse readById(Long id) {
+        return this.service.readById(id);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class NewsControllerImpl implements Controller<NewsDTOResponse, NewsDTORe
     }
 
     @Override
-    public Boolean deleteById(long id) {
+    public Boolean deleteById(Long id) {
         return this.service.deleteById(id);
     }
 

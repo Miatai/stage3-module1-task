@@ -12,7 +12,7 @@ public class Operations {
 
     public void getAllNews() {
         System.out.println(Constants.OPERATION + Constants.GET_ALL_NEWS);
-        controller.getAll().forEach(System.out::println);
+        controller.readAll().forEach(System.out::println);
     }
 
     public void getNewsById(Scanner sc) {
@@ -21,7 +21,7 @@ public class Operations {
         System.out.println(Constants.ID_INPUT);
         id = inputNumberByUser(sc);
         System.out.println(id);
-        System.out.println(controller.getById(id));
+        System.out.println(controller.readById(id));
     }
 
     public void createNews(Scanner sc) {

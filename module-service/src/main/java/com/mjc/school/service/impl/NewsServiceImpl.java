@@ -22,12 +22,12 @@ public class NewsServiceImpl implements Service<NewsDTOResponse, NewsDTORequest>
     private final NewsValidator newsValidator = new NewsValidator();
 
     @Override
-    public List<NewsDTOResponse> getAll() {
+    public List<NewsDTOResponse> readAll() {
         return newsMapper.convertListToDTOList(newsRepository.readAll());
     }
 
     @Override
-    public NewsDTOResponse getById(Long id) {
+    public NewsDTOResponse readById(Long id) {
         this.newsValidator.validateNewsId(id);
         if (this.newsRepository.isExistById(id)) {
             return this.newsMapper.convertToDTO(this.newsRepository.readById(id));
