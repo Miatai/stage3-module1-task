@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.mjc.school.service.interfaces.Service;
-import com.mjc.school.service.dto.NewsDTORequest;
-import com.mjc.school.service.dto.NewsDTOResponse;
+import com.mjc.school.service.dto.NewsDtoRequest;
+import com.mjc.school.service.dto.NewsDtoResponse;
 import com.mjc.school.service.exception.NotFoundException;
 import com.mjc.school.service.mapper.NewsMapper;
 import com.mjc.school.service.mapper.NewsMapperImpl;
@@ -14,7 +14,7 @@ import com.mjc.school.repository.interfaces.Repository;
 import com.mjc.school.repository.impl.NewsRepositoryImpl;
 import com.mjc.school.repository.model.NewsModel;
 
-public class NewsServiceImpl implements Service<NewsDTOResponse, NewsDTORequest> {
+public class NewsServiceImpl implements Service<NewsDtoResponse, NewsDtoRequest> {
     private final String NEWS_ID_DOES_NOT_EXIST = "News with id %s does not exist.";
 
     private final Repository<NewsModel> newsRepository = new NewsRepositoryImpl();
@@ -22,12 +22,12 @@ public class NewsServiceImpl implements Service<NewsDTOResponse, NewsDTORequest>
     private final NewsValidator newsValidator = new NewsValidator();
 
     @Override
-    public List<NewsDTOResponse> readAll() {
+    public List<NewsDtoResponse> readAll() {
         return newsMapper.convertListToDTOList(newsRepository.readAll());
     }
 
     @Override
-    public NewsDTOResponse readById(Long id) {
+    public NewsDtoResponse readById(Long id) {
         this.newsValidator.validateNewsId(id);
         if (this.newsRepository.isExistById(id)) {
             return this.newsMapper.convertToDTO(this.newsRepository.readById(id));
@@ -36,7 +36,7 @@ public class NewsServiceImpl implements Service<NewsDTOResponse, NewsDTORequest>
     }
 
     @Override
-    public NewsDTOResponse create(NewsDTORequest entity) {
+    public NewsDtoResponse create(NewsDtoRequest entity) {
         this.newsValidator.validateNewsDTO(entity);
         NewsModel temporaryNewsModel = newsMapper.convertToModel(entity);
         LocalDateTime date = LocalDateTime.now();
@@ -47,7 +47,7 @@ public class NewsServiceImpl implements Service<NewsDTOResponse, NewsDTORequest>
     }
 
     @Override
-    public NewsDTOResponse update(NewsDTORequest entity) {
+    public NewsDtoResponse update(NewsDtoRequest entity) {
         this.newsValidator.validateNewsId(entity.id());
         this.newsValidator.validateNewsDTO(entity);
         if (this.newsRepository.isExistById(entity.id())) {

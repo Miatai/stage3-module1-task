@@ -4,14 +4,14 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mjc.school.service.dto.NewsDTORequest;
-import com.mjc.school.service.dto.NewsDTOResponse;
+import com.mjc.school.service.dto.NewsDtoRequest;
+import com.mjc.school.service.dto.NewsDtoResponse;
 import com.mjc.school.repository.model.NewsModel;
 
 public class NewsMapperImpl implements NewsMapper {
 
     @Override
-    public NewsDTOResponse convertToDTO(NewsModel newsModel) {
+    public NewsDtoResponse convertToDTO(NewsModel newsModel) {
         if (newsModel == null) {
             return null;
         }
@@ -21,12 +21,12 @@ public class NewsMapperImpl implements NewsMapper {
         LocalDateTime createDate = newsModel.getCreateDate();
         LocalDateTime lastUpdateDate = newsModel.getLastUpdateDate();
         Long authorId = newsModel.getAuthorId();
-        NewsDTOResponse newsDTO = new NewsDTOResponse(id, title, content, createDate, lastUpdateDate, authorId);
+        NewsDtoResponse newsDTO = new NewsDtoResponse(id, title, content, createDate, lastUpdateDate, authorId);
         return newsDTO;
     }
 
     @Override
-    public NewsModel convertToModel(NewsDTORequest newsDTO) {
+    public NewsModel convertToModel(NewsDtoRequest newsDTO) {
         if (newsDTO == null) {
             return null;
         }
@@ -41,11 +41,11 @@ public class NewsMapperImpl implements NewsMapper {
     }
 
     @Override
-    public List<NewsDTOResponse> convertListToDTOList(List<NewsModel> newsModelList) {
+    public List<NewsDtoResponse> convertListToDTOList(List<NewsModel> newsModelList) {
         if (newsModelList == null) {
             return null;
         }
-        List<NewsDTOResponse> newsDTOList = new ArrayList<>();
+        List<NewsDtoResponse> newsDTOList = new ArrayList<>();
         for (NewsModel newsModel : newsModelList) {
             newsDTOList.add(convertToDTO(newsModel));
         }

@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 import com.mjc.school.controller.impl.NewsControllerImpl;
 import com.mjc.school.controller.interfaces.Controller;
-import com.mjc.school.service.dto.NewsDTORequest;
-import com.mjc.school.service.dto.NewsDTOResponse;
+import com.mjc.school.service.dto.NewsDtoRequest;
+import com.mjc.school.service.dto.NewsDtoResponse;
 
 public class Operations {
-    private final Controller<NewsDTOResponse, NewsDTORequest> controller = new NewsControllerImpl();
+    private final Controller<NewsDtoResponse, NewsDtoRequest> controller = new NewsControllerImpl();
 
     public void getAllNews() {
         System.out.println(Constants.OPERATION + Constants.GET_ALL_NEWS);
@@ -35,7 +35,7 @@ public class Operations {
         content = inputStringByUser(sc);
         System.out.println(Constants.AUTHOR_ID_INPUT);
         authorId = inputNumberByUser(sc);
-        NewsDTORequest newsRequest = new NewsDTORequest(null, title, content, authorId);
+        NewsDtoRequest newsRequest = new NewsDtoRequest(null, title, content, authorId);
         System.out.println(controller.create(newsRequest));
     }
 
@@ -53,7 +53,7 @@ public class Operations {
         content = inputStringByUser(sc);
         System.out.println(Constants.AUTHOR_ID_INPUT);
         authorId = inputNumberByUser(sc);
-        NewsDTORequest newsRequest = new NewsDTORequest(id, title, content, authorId);
+        NewsDtoRequest newsRequest = new NewsDtoRequest(id, title, content, authorId);
         System.out.println(controller.update(newsRequest));
     }
 

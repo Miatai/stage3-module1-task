@@ -1,6 +1,6 @@
 package com.mjc.school.service.validator;
 
-import com.mjc.school.service.dto.NewsDTORequest;
+import com.mjc.school.service.dto.NewsDtoRequest;
 import com.mjc.school.service.exception.ValidatorException;
 
 public class NewsValidator {
@@ -36,7 +36,7 @@ public class NewsValidator {
         }
     }
 
-    public void validateNewsDTO(NewsDTORequest newsDTO) {
+    public void validateNewsDTO(NewsDtoRequest newsDTO) {
         validateString(newsDTO.title(), NEWS_TITLE_LENGHT_MIN, NEWS_TITLE_LENGHT_MAX, NEWS_TITLE);
         validateString(newsDTO.content(), NEWS_CONTENT_LENGHT_MIN, NEWS_CONTENT_LENGHT_MAX, NEWS_CONTENT);
         validateAuthorId(newsDTO.authorId());

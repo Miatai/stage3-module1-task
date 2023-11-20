@@ -4,36 +4,36 @@ import java.util.List;
 
 import com.mjc.school.controller.interfaces.Controller;
 import com.mjc.school.service.interfaces.Service;
-import com.mjc.school.service.dto.NewsDTORequest;
-import com.mjc.school.service.dto.NewsDTOResponse;
+import com.mjc.school.service.dto.NewsDtoRequest;
+import com.mjc.school.service.dto.NewsDtoResponse;
 import com.mjc.school.service.impl.NewsServiceImpl;
 
-public class NewsControllerImpl implements Controller<NewsDTOResponse, NewsDTORequest> {
-    private final Service<NewsDTOResponse, NewsDTORequest> service = new NewsServiceImpl();
+public class NewsControllerImpl implements Controller<NewsDtoResponse, NewsDtoRequest> {
+    private final Service<NewsDtoResponse, NewsDtoRequest> newsService = new NewsServiceImpl();
 
     @Override
-    public List<NewsDTOResponse> readAll() {
-        return this.service.readAll();
+    public List<NewsDtoResponse> readAll() {
+        return this.newsService.readAll();
     }
 
     @Override
-    public NewsDTOResponse readById(Long id) {
-        return this.service.readById(id);
+    public NewsDtoResponse readById(Long id) {
+        return this.newsService.readById(id);
     }
 
     @Override
-    public NewsDTOResponse create(NewsDTORequest entity) {
-        return this.service.create(entity);
+    public NewsDtoResponse create(NewsDtoRequest entity) {
+        return this.newsService.create(entity);
     }
 
     @Override
-    public NewsDTOResponse update(NewsDTORequest entity) {
-        return this.service.update(entity);
+    public NewsDtoResponse update(NewsDtoRequest entity) {
+        return this.newsService.update(entity);
     }
 
     @Override
     public Boolean deleteById(Long id) {
-        return this.service.deleteById(id);
+        return this.newsService.deleteById(id);
     }
 
 }

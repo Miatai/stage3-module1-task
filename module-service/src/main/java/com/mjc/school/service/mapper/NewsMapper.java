@@ -6,16 +6,16 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import com.mjc.school.repository.model.NewsModel;
-import com.mjc.school.service.dto.NewsDTORequest;
-import com.mjc.school.service.dto.NewsDTOResponse;
+import com.mjc.school.service.dto.NewsDtoRequest;
+import com.mjc.school.service.dto.NewsDtoResponse;
 
 @Mapper
 public interface NewsMapper {
     NewsMapper INSTANCE = Mappers.getMapper(NewsMapper.class);
 
-    List<NewsDTOResponse> convertListToDTOList(List<NewsModel> news);
+    List<NewsDtoResponse> convertListToDTOList(List<NewsModel> news);
 
-    NewsDTOResponse convertToDTO(NewsModel news);
+    NewsDtoResponse convertToDTO(NewsModel news);
 
-    NewsModel convertToModel(NewsDTORequest newsDTO);
+    NewsModel convertToModel(NewsDtoRequest newsDTO);
 }
