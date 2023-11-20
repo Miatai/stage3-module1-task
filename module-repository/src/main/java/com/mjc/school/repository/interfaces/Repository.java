@@ -11,7 +11,7 @@ public interface Repository<T> {
 
     T update(T entity);
 
-    boolean deleteById(Long id);
+    Boolean deleteById(Long id);
 
     Boolean isExistById(Long id);
 }

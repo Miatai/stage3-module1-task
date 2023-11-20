@@ -42,7 +42,7 @@ public class NewsRepositoryImpl implements Repository<NewsModel> {
     }
 
     @Override
-    public boolean deleteById(Long id) {
+    public Boolean deleteById(Long id) {
         return this.dataSource.getNews().removeIf(news -> news.getId().equals(id));
     }
 
