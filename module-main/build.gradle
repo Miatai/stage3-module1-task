@@ -1,0 +1,14 @@
+dependencies {
+    implementation project(path: ':module-web')
+    implementation project(path: ':module-service')
+}
+
+jar {
+  manifest { 
+    attributes "Main-Class": "com.mjc.school.Main"
+  }  
+    archiveClassifier = "all"
+  from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}
