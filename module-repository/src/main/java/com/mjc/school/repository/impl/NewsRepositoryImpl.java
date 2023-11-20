@@ -7,15 +7,15 @@ import com.mjc.school.repository.interfaces.Repository;
 import com.mjc.school.repository.model.NewsModel;
 
 public class NewsRepositoryImpl implements Repository<NewsModel> {
-    private DataSource dataSource = DataSource.getInstance();
+    private final DataSource dataSource = DataSource.getInstance();
 
     @Override
-    public List<NewsModel> getAll() {
+    public List<NewsModel> readAll() {
         return this.dataSource.getNews();
     }
 
     @Override
-    public NewsModel getById(Long id) {
+    public NewsModel readById(Long id) {
         return this.dataSource.getNews()
                 .stream()
                 .filter(news -> id.equals(news.getId()))
@@ -33,7 +33,7 @@ public class NewsRepositoryImpl implements Repository<NewsModel> {
 
     @Override
     public NewsModel update(NewsModel entity) {
-        NewsModel newsModel = getById(entity.getId());
+        NewsModel newsModel = readById(entity.getId());
         newsModel.setAuthorId(entity.getAuthorId());
         newsModel.setContent(entity.getContent());
         newsModel.setLastUpdateDate(entity.getLastUpdateDate());
@@ -47,7 +47,7 @@ public class NewsRepositoryImpl implements Repository<NewsModel> {
     }
 
     @Override
-    public boolean isExistById(Long id) {
+    public Boolean isExistById(Long id) {
         return this.dataSource.getNews().stream().anyMatch(news -> news.getId().equals(id));
     }
 

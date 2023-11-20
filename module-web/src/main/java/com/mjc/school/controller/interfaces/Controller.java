@@ -11,5 +11,5 @@ public interface Controller<T1, T2> {
 
     T1 update(T2 entity);
 
-    boolean deleteById(long id);
+    Boolean deleteById(long id);
 }

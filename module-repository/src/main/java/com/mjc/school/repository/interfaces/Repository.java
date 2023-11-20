@@ -3,9 +3,9 @@ package com.mjc.school.repository.interfaces;
 import java.util.List;
 
 public interface Repository<T> {
-    List<T> getAll();
+    List<T> readAll();
 
-    T getById(Long id);
+    T readById(Long id);
 
     T create(T entity);
 
@@ -13,5 +13,5 @@ public interface Repository<T> {
 
     boolean deleteById(Long id);
 
-    boolean isExistById(Long id);
+    Boolean isExistById(Long id);
 }

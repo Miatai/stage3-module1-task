@@ -11,6 +11,6 @@ public interface Service<T1, T2> {
 
     T1 update(T2 entity);
 
-    boolean deleteById(Long id);
+    Boolean deleteById(Long id);
 
 }

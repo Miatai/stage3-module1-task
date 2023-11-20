@@ -32,7 +32,7 @@ public class NewsControllerImpl implements Controller<NewsDTOResponse, NewsDTORe
     }
 
     @Override
-    public boolean deleteById(long id) {
+    public Boolean deleteById(long id) {
         return this.service.deleteById(id);
     }
 

@@ -23,14 +23,14 @@ public class NewsServiceImpl implements Service<NewsDTOResponse, NewsDTORequest>
 
     @Override
     public List<NewsDTOResponse> getAll() {
-        return newsMapper.convertListToDTOList(newsRepository.getAll());
+        return newsMapper.convertListToDTOList(newsRepository.readAll());
     }
 
     @Override
     public NewsDTOResponse getById(Long id) {
         this.newsValidator.validateNewsId(id);
         if (this.newsRepository.isExistById(id)) {
-            return this.newsMapper.convertToDTO(this.newsRepository.getById(id));
+            return this.newsMapper.convertToDTO(this.newsRepository.readById(id));
         }
         throw new NotFoundException(String.format(NEWS_ID_DOES_NOT_EXIST, id));
     }
@@ -61,7 +61,7 @@ public class NewsServiceImpl implements Service<NewsDTOResponse, NewsDTORequest>
     }
 
     @Override
-    public boolean deleteById(Long id) {
+    public Boolean deleteById(Long id) {
         this.newsValidator.validateNewsId(id);
         if (this.newsRepository.isExistById(id)) {
             return this.newsRepository.deleteById(id);

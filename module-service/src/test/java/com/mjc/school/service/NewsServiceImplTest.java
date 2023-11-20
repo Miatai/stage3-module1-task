@@ -32,7 +32,7 @@ public class NewsServiceImplTest {
     public void init() {
         newsService = new NewsServiceImpl();
         newsRepository = new NewsRepositoryImpl();
-        newsList = newsRepository.getAll();
+        newsList = newsRepository.readAll();
     }
 
     @DisplayName("JUnit test for getAll method")
